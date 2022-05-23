@@ -6,7 +6,7 @@ from datetime import datetime
 
 class Diary(object):
     """  
-    This is a small python app that allows the user to make their own dream journal. The purpose of this app is
+    This is a small python app that allows the user to make their own journal. The purpose of this app is
     to teach intermediate python users how to do object oriented programming and other concepts such as pep 8 documentation,
     Args:
         diary_name -- the name of the diary you would like to use. Preferably just your name!
@@ -14,12 +14,12 @@ class Diary(object):
     Attributes:
         _data_dir -- Directory for the data folder that contains journal csvs
         _diary_dir -- file path for the journal of interest.
-        """
-    def __init__(self,diary_name, set_file_directory=None):
+    """
+    def __init__(self, diary_name, set_file_directory=None):
         # This function initializes your whole class and gets it started with everything it will need for basic functionality.
         self.diary_name = diary_name
         if set_file_directory:
-            self._current_directory = _set_file_directory
+            self._current_directory = set_file_directory
         else:
             self._current_directory = os.getcwd()
         self.initialize_diary()
@@ -44,7 +44,7 @@ class Diary(object):
         if os.path.exists(self._diary_dir):
             pass
         else:
-            with open(self._diary_dir, "w", newline='\n') as my_dream_diary:
+            with open(self._diary_dir, "w", newline='\n') as my_diary:
                 self.append_to_diary(date='date', journal_entry='journal_entry')
 
     def append_to_diary(self, date, journal_entry):
@@ -65,8 +65,8 @@ class Diary(object):
 
     def open_diary(self):
         """Opens the csv file that contains the diary information and reads entries into a list."""
-        with open(self._diary_dir, "r") as my_dream_diary:
-            diary_data = list(csv.reader(my_dream_diary))
+        with open(self._diary_dir, "r") as my_diary:
+            diary_data = list(csv.reader(my_diary))
         return diary_data
 
     def read_diary(self):
@@ -80,6 +80,7 @@ class Diary(object):
     def delete_diary(self):
         '''Deletes the journal csv.'''
         os.remove(self._diary_dir)
+
 
 
 
@@ -178,8 +179,12 @@ class Dream_Diary(Diary):
 
 
 if __name__=='__main__':
-    # michael_diary = Diary(diary_name='mikes_normal_journal')
+    #michael_diary = Diary(diary_name='mikes_normal_journal')
+    # michael_diary.add_diary_entry()
+    # michael_diary.add_diary_entry()
     michael_diary = Dream_Diary(diary_name='mikes_dream_journal')
     #michael_diary.add_diary_entry()
     michael_diary.read_diary()
+
+
 
