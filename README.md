@@ -1,4 +1,4 @@
-# Workshop for advance python concepts
+# Workshop on Python 
 Concepts include:
 
 1. Python basics
